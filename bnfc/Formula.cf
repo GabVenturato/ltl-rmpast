@@ -1,5 +1,5 @@
 -- BNFC Grammar for LTL+Past formulas
--- (C) 2020 Gabriele Venturato
+-- (c) 2020 Gabriele Venturato
 
 -- Formulas
 Implies.      Formula ::= Formula "->" Formula1 ;
@@ -28,8 +28,7 @@ Bool.         Formula5 ::= Boolean ;
 coercions Formula 5 ;
 
 -- Boolean values
-True.   Boolean ::= "True" ;
-False.  Boolean ::= "False" ;
+rules Boolean ::= "true" | "false" ;
 
 -- Position Tokens
 position token PIdent (letter (letter|digit|'_'|'\'')*) ;
