@@ -1,0 +1,35 @@
+-- BNFC Grammar for LTL+Past formulas
+-- (C) 2020 Gabriele Venturato
+
+-- Formulas
+Implies.      Formula ::= Formula "->" Formula1 ;
+Implied.      Formula ::= Formula "<-" Formula1 ;
+Iff.          Formula ::= Formula "<->" Formula1 ;
+
+Until.        Formula2 ::= Formula2 "U" Formula3 ;
+Release.      Formula2 ::= Formula2 "R" Formula3 ;
+Since.        Formula2 ::= Formula2 "S" Formula3 ;
+Triggered.    Formula2 ::= Formula2 "T" Formula3 ;
+And.          Formula2 ::= Formula2 "&" Formula3 ; -- /\, &&
+Or.           Formula2 ::= Formula2 "|" Formula3 ; -- \/, ||
+
+Next.         Formula4 ::= "X" Formula4 ;
+Eventually.   Formula4 ::= "F" Formula4 ;
+Always.       Formula4 ::= "G" Formula4 ;
+Yesterday.    Formula4 ::= "Y" Formula4 ;
+Wyesterday.   Formula4 ::= "Z" Formula4 ;
+Once.         Formula4 ::= "O" Formula4 ; -- P
+Historically. Formula4 ::= "H" Formula4 ;
+Not.          Formula4 ::= "!" Formula4 ;
+
+Atom.         Formula5 ::= PIdent ;
+Bool.         Formula5 ::= Boolean ;
+
+coercions Formula 5 ;
+
+-- Boolean values
+True.   Boolean ::= "True" ;
+False.  Boolean ::= "False" ;
+
+-- Position Tokens
+position token PIdent (letter (letter|digit|'_'|'\'')*) ;
