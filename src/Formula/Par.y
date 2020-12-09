@@ -21,25 +21,30 @@ import Formula.ErrM
 %token
   '!' { PT _ (TS _ 1) }
   '&' { PT _ (TS _ 2) }
-  '(' { PT _ (TS _ 3) }
-  ')' { PT _ (TS _ 4) }
-  '->' { PT _ (TS _ 5) }
-  '<-' { PT _ (TS _ 6) }
-  '<->' { PT _ (TS _ 7) }
-  'F' { PT _ (TS _ 8) }
-  'G' { PT _ (TS _ 9) }
-  'H' { PT _ (TS _ 10) }
-  'O' { PT _ (TS _ 11) }
-  'R' { PT _ (TS _ 12) }
-  'S' { PT _ (TS _ 13) }
-  'T' { PT _ (TS _ 14) }
-  'U' { PT _ (TS _ 15) }
-  'X' { PT _ (TS _ 16) }
-  'Y' { PT _ (TS _ 17) }
-  'Z' { PT _ (TS _ 18) }
-  'false' { PT _ (TS _ 19) }
-  'true' { PT _ (TS _ 20) }
-  '|' { PT _ (TS _ 21) }
+  '&&' { PT _ (TS _ 3) }
+  '(' { PT _ (TS _ 4) }
+  ')' { PT _ (TS _ 5) }
+  '->' { PT _ (TS _ 6) }
+  '/\\' { PT _ (TS _ 7) }
+  '<-' { PT _ (TS _ 8) }
+  '<->' { PT _ (TS _ 9) }
+  'F' { PT _ (TS _ 10) }
+  'False' { PT _ (TS _ 11) }
+  'G' { PT _ (TS _ 12) }
+  'H' { PT _ (TS _ 13) }
+  'O' { PT _ (TS _ 14) }
+  'P' { PT _ (TS _ 15) }
+  'R' { PT _ (TS _ 16) }
+  'S' { PT _ (TS _ 17) }
+  'T' { PT _ (TS _ 18) }
+  'True' { PT _ (TS _ 19) }
+  'U' { PT _ (TS _ 20) }
+  'X' { PT _ (TS _ 21) }
+  'Y' { PT _ (TS _ 22) }
+  'Z' { PT _ (TS _ 23) }
+  '\\/' { PT _ (TS _ 24) }
+  '|' { PT _ (TS _ 25) }
+  '||' { PT _ (TS _ 26) }
 
 L_PIdent { PT _ (T_PIdent _) }
 
@@ -59,7 +64,11 @@ Formula2 : Formula2 'U' Formula3 { Formula.Abs.Until $1 $3 }
          | Formula2 'S' Formula3 { Formula.Abs.Since $1 $3 }
          | Formula2 'T' Formula3 { Formula.Abs.Triggered $1 $3 }
          | Formula2 '&' Formula3 { Formula.Abs.And $1 $3 }
+         | Formula2 '&&' Formula3 { Formula.Abs.And $1 $3 }
+         | Formula2 '/\\' Formula3 { Formula.Abs.And $1 $3 }
          | Formula2 '|' Formula3 { Formula.Abs.Or $1 $3 }
+         | Formula2 '||' Formula3 { Formula.Abs.Or $1 $3 }
+         | Formula2 '\\/' Formula3 { Formula.Abs.Or $1 $3 }
          | Formula3 { $1 }
 Formula4 :: { Formula }
 Formula4 : 'X' Formula4 { Formula.Abs.Next $2 }
@@ -68,6 +77,7 @@ Formula4 : 'X' Formula4 { Formula.Abs.Next $2 }
          | 'Y' Formula4 { Formula.Abs.Yesterday $2 }
          | 'Z' Formula4 { Formula.Abs.Wyesterday $2 }
          | 'O' Formula4 { Formula.Abs.Once $2 }
+         | 'P' Formula4 { Formula.Abs.Once $2 }
          | 'H' Formula4 { Formula.Abs.Historically $2 }
          | '!' Formula4 { Formula.Abs.Not $2 }
          | Formula5 { $1 }
@@ -80,8 +90,8 @@ Formula1 : Formula2 { $1 }
 Formula3 :: { Formula }
 Formula3 : Formula4 { $1 }
 Boolean :: { Boolean }
-Boolean : 'true' { Formula.Abs.Boolean_true }
-        | 'false' { Formula.Abs.Boolean_false }
+Boolean : 'True' { Formula.Abs.Boolean_True }
+        | 'False' { Formula.Abs.Boolean_False }
 {
 
 returnM :: a -> Err a

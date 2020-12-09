@@ -108,7 +108,7 @@ instance Print Formula where
 
 instance Print Boolean where
   prt i e = case e of
-    Boolean_true -> prPrec i 0 (concatD [doc (showString "true")])
-    Boolean_false -> prPrec i 0 (concatD [doc (showString "false")])
+    Boolean_True -> prPrec i 0 (concatD [doc (showString "True")])
+    Boolean_False -> prPrec i 0 (concatD [doc (showString "False")])
 
 

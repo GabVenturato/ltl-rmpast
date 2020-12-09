@@ -31,6 +31,6 @@ data Formula
     | Bool Boolean
   deriving (Eq, Ord, Show, Read)
 
-data Boolean = Boolean_true | Boolean_false
+data Boolean = Boolean_True | Boolean_False
   deriving (Eq, Ord, Show, Read)
 

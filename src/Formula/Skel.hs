@@ -35,6 +35,6 @@ transFormula x = case x of
   Bool boolean -> failure x
 transBoolean :: Boolean -> Result
 transBoolean x = case x of
-  Boolean_true -> failure x
-  Boolean_false -> failure x
+  Boolean_True -> failure x
+  Boolean_False -> failure x
 
