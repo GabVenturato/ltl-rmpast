@@ -20,14 +20,13 @@ build-type:          Simple
 extra-source-files:  CHANGELOG.md
 
 executable ltl-rmpast
-  main-is:             LtlRmPast.hs
+  main-is:             Main.hs
   other-modules:
     Formula.Lex,
     Formula.Par,
     Formula.Abs,
-    Formula.ErrM,
     Formula.Print,
-    Formula.Skel
+    LtlRmPast
   -- other-extensions:
   build-depends:
     base >=4.12 && <4.13,

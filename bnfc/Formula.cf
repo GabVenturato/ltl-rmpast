@@ -27,13 +27,10 @@ Once.         Formula4 ::= "P" Formula4 ;
 Historically. Formula4 ::= "H" Formula4 ;
 Not.          Formula4 ::= "!" Formula4 ;
 
-Atom.         Formula5 ::= PIdent ;
+Atom.         Formula5 ::= Ident ;
 Bool.         Formula5 ::= Boolean ;
 
 coercions Formula 5 ;
 
 -- Boolean values
 rules Boolean ::= "True" | "False" ;
-
--- Position Tokens
-position token PIdent (letter (letter|digit|'_'|'\'')*) ;
