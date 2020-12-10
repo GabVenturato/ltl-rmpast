@@ -38,8 +38,8 @@ run v p s = case p ts of
       putStrLn "\nParse Successful!"
       showTree v tree
 
-      putStrLn "[Substitute Past]\n"
-      putStrLn $ printTree $ subPast tree
+      putStrLn "\n[Substitute Past]\n"
+      putStrLn $ printTree $ removePast tree
 
       exitSuccess
   where
