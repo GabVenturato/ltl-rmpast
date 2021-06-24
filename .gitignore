@@ -2,6 +2,8 @@
 bnfc/*
 !bnfc/*.cf
 
+.DS_Store
+
 # GitHub generated
 dist
 dist-*
