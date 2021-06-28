@@ -1,8 +1,11 @@
+.DS_Store
+
 # Ignore bnfc generated files, but not the grammar
 bnfc/*
 !bnfc/*.cf
 
-.DS_Store
+# Stack
+*~
 
 # GitHub generated
 dist

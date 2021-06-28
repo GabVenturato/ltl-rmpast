@@ -3,7 +3,9 @@ Exploit LTL and LTL+Past expressive equivalence to remove past from an LTL+Past
 formula, producing an LTL equisatisfiable one.
 
 ## Compile
-To try the past remover use [Cabal](https://www.haskell.org/cabal/) with `cabal run` or `cabal v2-run`.
+The project relies on [stack](https://www.haskellstack.org). Therefore, simply 
+run `stack build` to build the project, and `stack exec ltl-rmpast` to run
+it.
 
 ## BNFC
 To build and test the [BNFC](https://bnfc.digitalgrammars.com/) grammar file
